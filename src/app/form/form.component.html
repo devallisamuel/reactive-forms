@@ -1,0 +1,28 @@
+<form [formGroup]="loginForm" (ngSubmit) = "onSubmit()">
+    <div>
+        <label for="name">Project name:
+            <input type="text" name="project-name" formControlName="project-name">
+        </label>
+        <span>
+            <span *ngIf="loginForm.get('project-name').errors['nameIsForbidden']">
+                Use another name other than TEST
+            </span>
+            <span *ngIf="loginForm.get('project-name').errors['required']">
+                This field is required
+            </span>
+        </span>
+    </div>
+    <div>
+        <label for="name">Email:
+            <input type="email" name="email" formControlName="email">
+        </label>
+    </div>
+    <div>
+        <label for="state"> choose state:</label>
+        <select name="state" formControlName="state">
+            <option *ngFor="let state of states">{{state}}</option>
+        </select>
+        
+    </div>
+        <button type="submit">submit</button>
+</form>
